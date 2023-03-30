@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import data from './data';
+
+// components
+import { Song, Player } from './components';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [songs, setSongs] = useState(data);
+
+  console.log(songs);
 
   return (
     <div className="App">
-      <h1 className="font-bold text-xl underline">Music Player</h1>
+      <Song />
+      <Player />
     </div>
   );
 }
