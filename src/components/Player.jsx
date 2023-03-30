@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { FaPlay, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
-const Player = () => {
+const Player = ({ currentSong }) => {
+  const audioRef = useRef(null);
+
+  const playSongHandler = () => {
+    audioRef.current.play();
+  };
+
   return (
     <div className="min-h-[20vh] flex flex-col items-center justify-between">
       <div className="w-1/2 flex">
@@ -12,9 +18,14 @@ const Player = () => {
       </div>
       <div className="flex justify-between items-center p-4 w-[30%]">
         <FaAngleLeft size={30} className="cursor-pointer" />
-        <FaPlay size={30} className="cursor-pointer" />
+        <FaPlay
+          onClick={playSongHandler}
+          size={30}
+          className="cursor-pointer"
+        />
         <FaAngleRight size={30} className="cursor-pointer" />
       </div>
+      <audio ref={audioRef} src={currentSong.audio}></audio>
     </div>
   );
 };

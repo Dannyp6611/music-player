@@ -6,13 +6,12 @@ import { Song, Player } from './components';
 
 function App() {
   const [songs, setSongs] = useState(data);
-
-  console.log(songs);
+  const [currentSong, setCurrentSong] = useState(songs[0]);
 
   return (
     <div className="App">
-      <Song />
-      <Player />
+      <Song currentSong={currentSong} />
+      <Player currentSong={currentSong} />
     </div>
   );
 }
