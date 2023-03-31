@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300;
+}
 
 h1,
 h2,
 h3 {
   @apply text-gray-800;
+}
+
+h3,
+h4 {
+  @apply font-normal text-gray-500;
 }
