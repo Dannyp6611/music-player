@@ -2,13 +2,16 @@ import React from 'react';
 
 import { FaMusic } from 'react-icons/fa';
 
-const Nav = () => {
+const Nav = ({ setLibraryStatus }) => {
   return (
-    <nav>
+    <nav className="min-h-[10vh] flex justify-around items-center">
       <h1>Waves</h1>
-      <button>
+      <button
+        onClick={() => setLibraryStatus((prevStatus) => !prevStatus)}
+        className="cursor-pointer border-2 border-[rgb(65, 65, 65)] p-2 transition-all duration-300 ease-in hover:bg-[rgb(65,65,65)] hover:text-white flex items-center"
+      >
         Library
-        <FaMusic size={30} />
+        <FaMusic size={20} />
       </button>
     </nav>
   );

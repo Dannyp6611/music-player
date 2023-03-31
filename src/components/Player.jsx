@@ -30,6 +30,8 @@ const Player = ({
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
+  const skipTrackHandler = () => {};
+
   return (
     <div className="min-h-[20vh] flex flex-col items-center justify-between">
       <div className="w-1/2 flex">
