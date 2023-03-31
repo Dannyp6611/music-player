@@ -3,11 +3,14 @@ import React from 'react';
 import { FaPlay, FaPause, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 const Player = ({
+  songs,
   songInfo,
   setSongInfo,
   isPlaying,
   setIsPlaying,
   audioRef,
+  currentSong,
+  setCurrentSong,
 }) => {
   const playSongHandler = () => {
     if (isPlaying) {
@@ -30,7 +33,19 @@ const Player = ({
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
-  const skipTrackHandler = () => {};
+  const skipTrackHandler = (direction) => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    if (direction === 'skip-forward') {
+      setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    }
+    if (direction === 'skip-back') {
+      if ((currentIndex - 1) % songs.length === -1) {
+        setCurrentSong(songs[songs.length - 1]);
+        return;
+      }
+      setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+    }
+  };
 
   return (
     <div className="min-h-[20vh] flex flex-col items-center justify-between">
@@ -47,7 +62,11 @@ const Player = ({
         <p className="p-4">{getTime(songInfo.duration)}</p>
       </div>
       <div className="flex justify-between items-center p-4 w-[30%]">
-        <FaAngleLeft size={30} className="cursor-pointer" />
+        <FaAngleLeft
+          onClick={() => skipTrackHandler('skip-back')}
+          size={30}
+          className="cursor-pointer"
+        />
         {isPlaying ? (
           <FaPause
             onClick={playSongHandler}
@@ -61,7 +80,11 @@ const Player = ({
             className="cursor-pointer"
           />
         )}
-        <FaAngleRight size={30} className="cursor-pointer" />
+        <FaAngleRight
+          onClick={() => skipTrackHandler('skip-forward')}
+          size={30}
+          className="cursor-pointer"
+        />
       </div>
     </div>
   );
