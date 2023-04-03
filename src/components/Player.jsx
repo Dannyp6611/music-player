@@ -70,7 +70,7 @@ const Player = ({
 
   return (
     <div className="min-h-[20vh] flex flex-col items-center justify-between">
-      <div className="w-1/2 flex">
+      <div className="w-[90%] md:w-1/2 flex">
         <p className="p-4">{getTime(songInfo.currentTime)}</p>
         <input
           min={0}
@@ -84,7 +84,7 @@ const Player = ({
           {songInfo.duration ? getTime(songInfo.duration) : '0:00'}
         </p>
       </div>
-      <div className="flex justify-between items-center p-4 w-[30%]">
+      <div className="flex justify-between items-center p-4 w-[60%] md:w-[30%]">
         <FaAngleLeft
           onClick={() => skipTrackHandler('skip-back')}
           size={30}

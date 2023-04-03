@@ -36,7 +36,11 @@ function App() {
   };
 
   return (
-    <div className="font-lato">
+    <div
+      className={`font-lato ${
+        libraryStatus && 'ml-[10%] transition-all duration-500 ease'
+      }`}
+    >
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} />
       <Player

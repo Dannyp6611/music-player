@@ -8,7 +8,7 @@ const Song = ({ currentSong }) => {
       <img
         src={cover}
         alt={currentSong.name}
-        className="w-[20%] rounded-full"
+        className="w-[60%] md:w-[20%] rounded-full"
       />
       <h2 className="pt-12 pr-4 pb-4 pl-4">{name}</h2>
       <h3 className="text-base">{artist}</h3>

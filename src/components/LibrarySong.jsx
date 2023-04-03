@@ -40,7 +40,7 @@ const LibrarySong = ({
       onClick={songSelectHandler}
       className={`${
         song.active && 'bg-blue-100'
-      } flex items-center pt-4 pr-8 pb-4 pl-8 cursor-pointer hover:bg-blue-200`}
+      } flex items-center pt-4 pr-8 pb-4 pl-8 cursor-pointer hover:bg-blue-200 transition-colors duration-500 ease`}
     >
       <img src={cover} alt={name} className="w-[30%] rounded-full" />
       <div className="pl-4">

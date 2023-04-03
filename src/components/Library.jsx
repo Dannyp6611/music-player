@@ -12,13 +12,13 @@ const Library = ({
 }) => {
   return (
     <div
-      className={`fixed top-0 left-0 bg-white w-[20rem] h-full shadow-lg shadow-gray-600 overflow-scroll transform ${
+      className={`fixed w-full top-0 left-0 bg-white md:w-[20rem] h-full shadow-lg shadow-gray-600 overflow-scroll transform ${
         libraryStatus
           ? 'translate-x-0 opacity-1'
           : '-translate-x-full opacity-0'
       } transition-all duration-200 ease-in-out`}
     >
-      <h2 className="pl-8">Library</h2>
+      <h2 className="pl-8 py-6 font-bold text-xl">Library</h2>
       <div className="">
         {songs.map((song) => (
           <LibrarySong
