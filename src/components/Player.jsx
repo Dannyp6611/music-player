@@ -80,7 +80,7 @@ const Player = ({
           value={songInfo.currentTime}
           onChange={dragHandler}
           type="range"
-          className="flex-1 py-4"
+          className="flex-1 py-4 appearance-none bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-gray-100 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[16px] [&::-webkit-slider-thumb]:w-[16px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-pink-500"
         />
         <p className="p-4">
           {songInfo.duration ? getTime(songInfo.duration) : '0:00'}
