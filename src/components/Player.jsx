@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { FaPlay, FaPause, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
+import { playAudio } from '../util';
+
 const Player = ({
   songs,
+  setSongs,
   songInfo,
   setSongInfo,
   isPlaying,
@@ -12,6 +15,23 @@ const Player = ({
   currentSong,
   setCurrentSong,
 }) => {
+  useEffect(() => {
+    const newSongs = songs.map((s) => {
+      if (s.id === currentSong.id) {
+        return {
+          ...s,
+          active: true,
+        };
+      }
+      return {
+        ...s,
+        active: false,
+      };
+    });
+
+    setSongs(newSongs);
+  }, [currentSong]);
+
   const playSongHandler = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -41,10 +61,13 @@ const Player = ({
     if (direction === 'skip-back') {
       if ((currentIndex - 1) % songs.length === -1) {
         setCurrentSong(songs[songs.length - 1]);
+        playAudio(isPlaying, audioRef);
         return;
       }
       setCurrentSong(songs[(currentIndex - 1) % songs.length]);
     }
+
+    playAudio(isPlaying, audioRef);
   };
 
   return (
@@ -59,7 +82,9 @@ const Player = ({
           type="range"
           className="flex-1 py-4"
         />
-        <p className="p-4">{getTime(songInfo.duration)}</p>
+        <p className="p-4">
+          {songInfo.duration ? getTime(songInfo.duration) : '0:00'}
+        </p>
       </div>
       <div className="flex justify-between items-center p-4 w-[30%]">
         <FaAngleLeft
