@@ -39,13 +39,13 @@ const LibrarySong = ({
     <div
       onClick={songSelectHandler}
       className={`${
-        song.active && 'bg-blue-100'
-      } flex items-center pt-4 pr-8 pb-4 pl-8 cursor-pointer hover:bg-blue-200 transition-colors duration-500 ease`}
+        song.active && 'bg-pink-400'
+      } flex items-center pt-4 pr-8 pb-4 pl-8 cursor-pointer hover:bg-pink-300 transition-colors duration-500 ease`}
     >
       <img src={cover} alt={name} className="w-[30%] rounded-full" />
       <div className="pl-4">
-        <h3 className="text-base">{name}</h3>
-        <h4 className="text-xs">{artist}</h4>
+        <h3 className="text-base font-bold text-gray-800">{name}</h3>
+        <h4 className="text-xs font-bold text-gray-600">{artist}</h4>
       </div>
     </div>
   );
